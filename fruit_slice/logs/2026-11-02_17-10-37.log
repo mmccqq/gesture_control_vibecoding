@@ -1,0 +1,11 @@
+17:10:37.178  camera 0, canvas 960x720, blade_min_speed 700px/s, best 73
+17:10:39.353  start (best 73) | score 0 lives 3 t 0.0s
+17:10:42.186  slice plum +1 at 4713px/s (stroke 1, streak 1) | score 1 lives 3 t 2.8s
+17:10:42.452  perf: 29.8 fps, slowest frame 97 ms, hand seen in 79% of frames
+17:10:42.619  slice lime +1 at 2471px/s (stroke 1, streak 2) | score 2 lives 3 t 3.3s
+17:10:44.351  slice melon +2 at 2063px/s (stroke 1, streak 3) | score 4 lives 3 t 5.0s
+17:10:45.551  slice apple +1 at 1967px/s (stroke 1, streak 4) | score 5 lives 3 t 6.2s
+17:10:47.484  perf: 29.8 fps, slowest frame 53 ms, hand seen in 100% of frames
+17:10:48.018  slice lime +1 at 2393px/s (stroke 1, streak 5) | score 6 lives 3 t 8.7s
+17:10:48.683  slice lime +1 at 3536px/s (stroke 2, streak 6) | score 7 lives 3 t 9.3s
+17:10:51.224  quit

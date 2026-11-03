@@ -1,0 +1,95 @@
+# Gesture Control settings. Changes apply as soon as you save
+# (except camera_index / frame_width / frame_height, which need a restart).
+#
+# [poses] sets what each hand shape does. Either a mode:
+#   move            cursor follows your palm (your index tip for point); pinches run pinch_*
+#   scroll          move your hand up/down to scroll
+#   swipe           flicks run the swipe_* actions
+#   freeze          nothing happens (rest your hand)
+# or any action below, which runs once when you hold the shape
+# (for pose_action_hold_s). "none" ignores the shape: the current mode continues.
+#
+# [gestures] sets the action for each pinch/thumb press (in move mode) and flick
+# (in swipe mode).
+#
+# Available actions:
+#   none            do nothing
+#   left_click      click (on a pinch: hold to drag)
+#   double_click    double click
+#   right_click     right click
+#   desktop_left    previous desktop (ctrl+left)
+#   desktop_right   next desktop (ctrl+right)
+#   mission_control Mission Control (ctrl+up)
+#   app_windows     current app's windows (ctrl+down)
+#   show_desktop    show desktop (F11)
+#   play_pause      play / pause media
+#   next_track      next track
+#   previous_track  previous track
+#   volume_up       volume up
+#   volume_down     volume down
+#   mute            mute / unmute
+#   keys:<combo>    press a key combo, e.g. "keys:cmd+shift+4", "keys:cmd+tab"
+#                   modifiers: cmd shift ctrl alt fn; keys: a-z 0-9 f1-f12
+#                   left right up down space return tab escape delete ...
+#   open:<App>      open an app, e.g. "open:Safari"
+
+[poses]
+# open hand (3+ fingers up)
+open_hand = "swipe"
+# index + middle up (V)
+two_fingers = "scroll"
+# index finger up
+point = "move"
+# fist
+fist = "freeze"
+# fist with thumb pointing up
+thumbs_up = "none"
+# index + pinky up
+rock = "right_click"
+
+[gestures]
+# move mode with point: tuck your thumb against your hand
+thumb_press = "left_click"
+# move mode, other shapes: pinch thumb + index
+pinch_index = "left_click"
+# move mode, other shapes: pinch thumb + middle
+pinch_middle = "right_click"
+# move mode, other shapes: pinch thumb + ring
+pinch_ring = "none"
+# move mode, other shapes: pinch thumb + pinky
+pinch_pinky = "none"
+# swipe mode, flick left
+swipe_left = "desktop_right"
+# swipe mode, flick right
+swipe_right = "desktop_left"
+# swipe mode, flick up
+swipe_up = "mission_control"
+# swipe mode, flick down
+swipe_down = "app_windows"
+
+[tuning]
+# See gesture_control/config.py for what each value does.
+camera_index = 0
+frame_width = 640
+frame_height = 480
+preview_camera_image = false
+active_box = [0.35, 0.25, 0.65, 0.50]
+filter_min_cutoff = 0.8
+filter_beta = 0.005
+cursor_deadzone_px = 8.0
+pose_stable_frames = 3
+lost_hand_grace_s = 0.25
+finger_extended_ratio = 1.1
+thumb_extended_ratio = 0.8
+pose_action_hold_s = 0.5
+pinch_start = 0.28
+pinch_release = 0.4
+thumb_press_start = 0.4
+thumb_press_release = 0.55
+drag_deadzone_px = 15.0
+drag_hold_s = 0.3
+scroll_gain = 3000.0
+scroll_invert = false
+swipe_window_s = 0.35
+swipe_min_distance = 0.18
+swipe_cooldown_s = 0.9

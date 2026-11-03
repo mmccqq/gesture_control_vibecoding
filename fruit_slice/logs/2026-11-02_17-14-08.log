@@ -1,0 +1,53 @@
+17:14:08.443  camera 0, canvas 960x720, blade_min_speed 700px/s, best 73
+17:14:10.753  start (best 73) | score 0 lives 3 t 0.0s
+17:14:12.320  slice plum +1 at 3282px/s (stroke 1, streak 1) | score 1 lives 3 t 1.6s
+17:14:13.685  perf: 29.7 fps, slowest frame 90 ms, hand seen in 77% of frames
+17:14:15.151  slice lime +1 at 4487px/s (stroke 2, streak 2) | score 2 lives 3 t 4.4s
+17:14:15.351  slice lemon +1 at 2641px/s (stroke 3, streak 3) | score 3 lives 3 t 4.6s
+17:14:16.252  combo 3 +3 | score 6 lives 3 t 5.5s
+17:14:17.588  slice orange +1 at 2215px/s (stroke 1, streak 4) | score 7 lives 3 t 6.8s
+17:14:18.716  perf: 29.6 fps, slowest frame 67 ms, hand seen in 100% of frames
+17:14:19.116  slice lemon +1 at 1887px/s (stroke 1, streak 5) | score 8 lives 3 t 8.4s
+17:14:20.482  slice apple +1 at 2032px/s (stroke 1, streak 6) | score 9 lives 3 t 9.7s
+17:14:21.749  slice melon +2 at 1413px/s (stroke 1, streak 7) | score 11 lives 3 t 11.0s
+17:14:23.648  slice apple +1 at 2328px/s (stroke 1, streak 8) | score 12 lives 3 t 12.9s
+17:14:23.746  perf: 29.8 fps, slowest frame 58 ms, hand seen in 100% of frames
+17:14:27.980  slice lime +2 at 1775px/s (stroke 1, streak 9) | score 14 lives 3 t 17.2s
+17:14:28.113  slice melon +4 at 1110px/s (stroke 2, streak 10) | score 18 lives 3 t 17.4s
+17:14:28.779  perf: 30.0 fps, slowest frame 39 ms, hand seen in 97% of frames
+17:14:29.313  slice plum +2 at 764px/s (stroke 1, streak 11) | score 20 lives 3 t 18.6s
+17:14:30.845  slice melon +4 at 2670px/s (stroke 1, streak 12) | score 24 lives 3 t 20.1s
+17:14:32.711  slice lemon +2 at 2453px/s (stroke 1, streak 13) | score 26 lives 3 t 22.0s
+17:14:33.810  perf: 30.0 fps, slowest frame 40 ms, hand seen in 100% of frames
+17:14:34.510  slice orange +2 at 1372px/s (stroke 1, streak 14) | score 28 lives 3 t 23.8s
+17:14:35.044  slice lemon +2 at 1276px/s (stroke 1, streak 15) | score 30 lives 3 t 24.3s
+17:14:35.076  slice plum +2 at 865px/s (stroke 2, streak 16) | score 32 lives 3 t 24.3s
+17:14:36.076  slice plum +3 at 3711px/s (stroke 3, streak 17) | score 35 lives 3 t 25.3s
+17:14:36.376  combo 3 +3 | score 38 lives 3 t 25.6s
+17:14:37.309  slice orange +3 at 2037px/s (stroke 1, streak 18) | score 41 lives 3 t 26.6s
+17:14:38.009  slice apple +3 at 2529px/s (stroke 1, streak 19) | score 44 lives 3 t 27.3s
+17:14:38.041  slice orange +3 at 2581px/s (stroke 2, streak 20) | score 47 lives 3 t 27.3s
+17:14:38.841  perf: 30.0 fps, slowest frame 37 ms, hand seen in 100% of frames
+17:14:39.675  slice lemon +3 at 2070px/s (stroke 1, streak 21) | score 50 lives 3 t 28.9s
+17:14:40.041  slice orange +3 at 3349px/s (stroke 2, streak 22) | score 53 lives 3 t 29.3s
+17:14:40.808  slice orange +3 at 2782px/s (stroke 1, streak 23) | score 56 lives 3 t 30.1s
+17:14:41.207  slice orange +3 at 1850px/s (stroke 2, streak 24) | score 59 lives 3 t 30.5s
+17:14:42.340  slice lemon +4 at 2565px/s (stroke 1, streak 25) | score 63 lives 3 t 31.6s
+17:14:42.340  thorn sliced at 2565px/s | score 63 lives 2 t 31.6s
+17:14:43.539  slice melon +2 at 1291px/s (stroke 1, streak 1) | score 65 lives 2 t 32.7s
+17:14:43.872  perf: 29.2 fps, slowest frame 154 ms, hand seen in 100% of frames
+17:14:45.338  slice apple +1 at 2663px/s (stroke 1, streak 2) | score 66 lives 2 t 34.5s
+17:14:46.338  slice plum +1 at 5836px/s (stroke 1, streak 3) | score 67 lives 2 t 35.5s
+17:14:47.939  slice apple +1 at 2371px/s (stroke 1, streak 4) | score 68 lives 2 t 37.1s
+17:14:48.905  perf: 29.6 fps, slowest frame 101 ms, hand seen in 94% of frames
+17:14:49.238  slice lime +1 at 1947px/s (stroke 1, streak 5) | score 69 lives 2 t 38.4s
+17:14:51.721  missed orange | score 69 lives 1 t 40.9s
+17:14:52.901  slice plum +1 at 2080px/s (stroke 1, streak 1) | score 70 lives 1 t 42.1s
+17:14:52.901  slice orange +1 at 2080px/s (stroke 2, streak 2) | score 71 lives 1 t 42.1s
+17:14:53.005  slice plum +1 at 2124px/s (stroke 3, streak 3) | score 72 lives 1 t 42.2s
+17:14:53.404  combo 3 +3 | score 75 lives 1 t 42.6s
+17:14:53.404  missed plum | score 75 lives 0 t 42.6s
+17:14:53.404  game over - new best | score 75 lives 0 t 42.6s
+17:14:53.935  perf: 29.8 fps, slowest frame 67 ms, hand seen in 89% of frames
+17:14:58.968  perf: 29.0 fps, slowest frame 121 ms, hand seen in 5% of frames
+17:15:03.409  quit

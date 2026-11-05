@@ -3,14 +3,11 @@ Run from the project root:  .venv/bin/python -m unittest discover -s fruit_slice
 
 import math
 import random
-import tempfile
 import unittest
-from pathlib import Path
 from types import SimpleNamespace
 
 from fruit_slice.game import FROST, FRUITS, THORN, Game, Item, State, segment_hits_circle
 from fruit_slice.hand import HandInput, PointFilter, is_thumbs_up
-from fruit_slice.log import GameLog
 from gesture_control.gestures import Pose
 
 APPLE = FRUITS[0]
@@ -135,15 +132,6 @@ class GameTest(unittest.TestCase):
         self.game.update(DT, None)
         self.assertEqual((item.y, item.vy), (360.0, 0.0))
 
-    def test_messages_for_the_log(self):
-        self.place()
-        self.swipe()
-        self.assertTrue(self.game.messages[-1].startswith("slice apple +1 at "))
-        item = self.place(y=self.game.cfg.height + 100)
-        item.vy = 10.0
-        self.game.update(DT, None)
-        self.assertIn("missed apple | score 1 lives 2", self.game.messages[-1])
-
     def test_spawning_launches_items_upward(self):
         self.game._next_spawn = 0.0
         for _ in range(20):
@@ -169,27 +157,6 @@ class PointFilterTest(unittest.TestCase):
         for i in range(90):
             xs.append(f(480 + rng.gauss(0, 2), 360, i / 30)[0])
         self.assertLess(max(xs[30:]) - min(xs[30:]), 6)
-
-
-class GameLogTest(unittest.TestCase):
-    def test_writes_events_and_frames_and_prunes(self):
-        with tempfile.TemporaryDirectory() as d:
-            d = Path(d)
-            for i in range(3):
-                (d / f"2000-01-0{i + 1}_00-00-00.log").write_text("old")
-                (d / f"2000-01-0{i + 1}_00-00-00.csv").write_text("old")
-            log = GameLog(d, keep=2)
-            game, hand = Game(), HandInput(960, 720)
-            hand.update(fake_hand(), 1.0, 0.0)
-            log.frame(0.0, DT, game, hand, True)
-            log.info("hello")
-            log.close()
-            self.assertEqual(sorted(p.name for p in d.glob("*.log")),
-                             ["2000-01-03_00-00-00.log", log.path.name])
-            self.assertIn("hello", log.path.read_text())
-            rows = log.csv_path.read_text().splitlines()
-            self.assertEqual(len(rows), 2)
-            self.assertTrue(rows[1].startswith("0.000,33.3,menu,open_hand,"))
 
 
 def fake_hand(fist=False, thumb_up=False):

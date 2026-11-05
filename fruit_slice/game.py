@@ -148,10 +148,9 @@ class Game:
         self.rng = rng or random.Random()
         self.best = best
         self.state = State.MENU
-        # Names of things that happened ("slice", "thorn", ...), for sound effects,
-        # and a readable line about each for the log. The caller drains both lists.
+        # Names of things that happened ("slice", "thorn", ...), for sound effects.
+        # The caller drains the list.
         self.events: list[str] = []
-        self.messages: list[str] = []
         self._reset()
 
     def _reset(self) -> None:
@@ -194,7 +193,6 @@ class Game:
         self._reset()
         self.state = State.PLAYING
         self.events.append("start")
-        self._note(f"start (best {self.best})")
 
     def toggle_pause(self) -> None:
         if self.state is State.PLAYING:
@@ -202,12 +200,6 @@ class Game:
         elif self.state is State.PAUSED:
             self.state = State.PLAYING
         self._blade_prev = None
-        self._note(self.state.value)
-
-    def _note(self, text: str) -> None:
-        if self.state is not State.MENU:
-            self.messages.append(f"{text} | score {self.score} lives {self.lives} "
-                                 f"t {self.play_time:.1f}s")
 
     # --- per frame ----------------------------------------------------------
 
@@ -250,7 +242,6 @@ class Game:
             x, y = self._stroke_at
             self.popups.append(Popup(f"COMBO x{n}  +{n}", x, y - 40, (80, 220, 255), 1.1, 1.3))
             self.events.append("combo")
-            self._note(f"combo {n} +{n}")
 
     def _slice(self, item: Item, a: Point, b: Point) -> None:
         self.items.remove(item)
@@ -262,7 +253,7 @@ class Game:
             self.events.append("thorn")
             if self.playing:
                 self.popups.append(Popup("-1", item.x, item.y, (60, 60, 235), 1.3))
-                self._lose_life(f"thorn sliced at {self.blade_speed:.0f}px/s")
+                self._lose_life()
             return
 
         angle = math.degrees(math.atan2(b[1] - a[1], b[0] - a[0]))
@@ -291,18 +282,15 @@ class Game:
         gained = t.points * old
         self.score += gained
         self.streak += 1
-        self._note(f"slice {t.name} +{gained} at {self.blade_speed:.0f}px/s "
-                   f"(stroke {self._stroke}, streak {self.streak})")
         if t.kind is Kind.FRUIT:
             self.popups.append(Popup(f"+{gained}", item.x, item.y, (255, 255, 255), 0.8, 0.6))
         if self.multiplier > old:
             self.popups.append(Popup(f"x{self.multiplier} STREAK", self.cfg.width / 2,
                                      self.cfg.height * 0.22, (60, 200, 255), 1.3, 1.2))
 
-    def _lose_life(self, reason: str) -> None:
+    def _lose_life(self) -> None:
         self.lives -= 1
         self.streak = 0
-        self._note(reason)
         if self.lives <= 0:
             self.state = State.OVER
             self.frost_left = 0.0
@@ -310,7 +298,6 @@ class Game:
                 self.best = self.score
                 self.new_best = True
             self.events.append("over")
-            self._note(f"game over{' - new best' if self.new_best else ''}")
 
     def _burst(self, x: float, y: float, color: Color, count: int, speed: float) -> None:
         for _ in range(count):
@@ -384,7 +371,7 @@ class Game:
                 x = min(max(item.x, 60), self.cfg.width - 60)
                 self.popups.append(Popup("MISS", x, h - 40, (60, 60, 235), 1.0))
                 self.events.append("miss")
-                self._lose_life(f"missed {item.type.name}")
+                self._lose_life()
         self.halves = [o for o in self.halves if o.y - o.type.radius <= h]
 
         for p in self.particles:

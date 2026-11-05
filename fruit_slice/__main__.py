@@ -1,4 +1,4 @@
-"""Run from the project root with:  .venv/bin/python -m fruit_slice [--camera N] [--mute] [--no-log]"""
+"""Run from the project root with:  .venv/bin/python -m fruit_slice [--camera N] [--mute]"""
 
 import argparse
 import sys
@@ -13,7 +13,6 @@ from . import render
 from .camera import TrackedCamera
 from .game import Game, GameConfig, State
 from .hand import HandInput
-from .log import GameLog
 from .sound import Sounds
 
 WINDOW = "Orchard Blade"
@@ -65,7 +64,6 @@ def main() -> int:
     parser.add_argument("--camera", type=int, default=0, help="camera index")
     parser.add_argument("--mute", action="store_true", help="no sound effects")
     parser.add_argument("--fullscreen", action="store_true", help="start fullscreen")
-    parser.add_argument("--no-log", action="store_true", help="don't write fruit_slice/logs/")
     args = parser.parse_args()
 
     camera = TrackedCamera(args.camera)
@@ -80,11 +78,6 @@ def main() -> int:
     game = Game(cfg, best=load_best())
     hand = HandInput(cfg.width, cfg.height)
     sounds = Sounds(enabled=not args.mute)
-    log = None if args.no_log else GameLog()
-    if log:
-        log.info(f"camera {args.camera}, canvas {cfg.width}x{cfg.height}, "
-                 f"blade_min_speed {cfg.blade_min_speed:.0f}px/s, best {game.best}")
-        print(f"Logging to {log.path} (+ .csv)")
 
     cv2.namedWindow(WINDOW, cv2.WINDOW_NORMAL)
     cv2.resizeWindow(WINDOW, cfg.width, cfg.height)
@@ -112,11 +105,6 @@ def main() -> int:
             handle_hold(game, hand.update(landmarks, w / h, now))
             cutting = not hand.sheathed
             game.update(dt, hand.blade, cutting)
-            if log:
-                log.frame(now, dt, game, hand, cutting)
-                for message in game.messages:
-                    log.info(message)
-            game.messages.clear()
             for event in game.events:
                 sounds.play(event)
                 if event == "over" and game.new_best:
@@ -131,9 +119,6 @@ def main() -> int:
         pass
     finally:
         camera.close()
-        if log:
-            log.info("quit")
-            log.close()
         cv2.destroyAllWindows()
     return 0
 

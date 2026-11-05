@@ -7,6 +7,14 @@ tracking, OpenCV, and Quartz to send mouse and keyboard events.
 The repo also includes **[Orchard Blade](fruit_slice/README.md)**, a fruit-slicing game
 played with your index finger. It's built on the same hand tracking.
 
+## Demo
+
+| Move the cursor | Click |
+|---|---|
+| ![Pointing with the index finger moves the cursor](docs/demo/cursor.gif) | ![Clicking with a gesture](docs/demo/left-click.gif) |
+| **Right click** | **Scroll** |
+| ![Right-clicking with a gesture](docs/demo/right-click.gif) | ![Two fingers up and down scroll the page](docs/demo/scroll.gif) |
+
 ## Requirements
 
 - macOS (built and tested on Apple Silicon)

@@ -82,7 +82,7 @@ class HandInput:
         self._cfg = Config()
         # Light smoothing only: the blade has to keep up with fast swipes.
         self._filter = PointFilter()
-        self.raw: tuple[float, float] | None = None    # fingertip as tracked, for the log
+        self.raw: tuple[float, float] | None = None    # fingertip as tracked
         self.blade: tuple[float, float] | None = None  # smoothed blade point
         self.estimated = False  # blade placed from the knuckle this frame (finger misread)
         self.pose: Pose | None = None
